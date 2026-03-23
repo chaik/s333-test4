@@ -98,9 +98,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 
   // enable menu collapse on escape keypress
   if (!expanded || isDesktop.matches) {
-    // collapse menu on escape press
     window.addEventListener('keydown', closeOnEscape);
-    // collapse menu on focus lost
     nav.addEventListener('focusout', closeOnFocusLost);
   } else {
     window.removeEventListener('keydown', closeOnEscape);
@@ -151,6 +149,18 @@ export default async function decorate(block) {
     });
   }
 
+  // extract promo bar from nav-tools (third section)
+  const navTools = nav.querySelector('.nav-tools');
+  let promoBar;
+  if (navTools) {
+    const promoText = navTools.querySelector('p');
+    if (promoText) {
+      promoBar = document.createElement('div');
+      promoBar.className = 'promo-bar';
+      promoBar.append(promoText);
+    }
+  }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
@@ -166,6 +176,7 @@ export default async function decorate(block) {
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
+  if (promoBar) navWrapper.append(promoBar);
   navWrapper.append(nav);
   block.append(navWrapper);
 }

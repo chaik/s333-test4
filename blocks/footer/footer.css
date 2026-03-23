@@ -6,15 +6,84 @@ footer {
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 40px 24px 0;
 }
 
 footer .footer p {
   margin: 0;
+  line-height: 1.6;
+}
+
+/* copyright bar */
+footer .footer > div > div:last-child {
+  border-top: 1px solid var(--color-beige-dark);
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+footer .footer > div > div:last-child p {
+  color: var(--color-brown-muted);
+  font-size: 12px;
+}
+
+/* main footer content area */
+footer .footer > div > div:first-child {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding-bottom: 32px;
+}
+
+/* company info column */
+footer .footer > div > div:first-child > div:first-child img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+footer .footer > div > div:first-child > div:first-child p:nth-child(2) {
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+footer .footer > div > div:first-child > div:first-child p:nth-child(3) {
+  font-style: italic;
+  color: var(--color-brown-muted);
+}
+
+/* link columns */
+footer .footer > div > div:first-child > div:not(:first-child) p:first-child {
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 8px;
+}
+
+footer .footer > div > div:first-child > div:not(:first-child) p:not(:first-child) {
+  color: var(--color-brown-light);
+  line-height: 2;
+}
+
+@media (width >= 600px) {
+  footer .footer > div > div:first-child {
+    grid-template-columns: 1.5fr repeat(2, 1fr);
+    gap: 32px;
+  }
 }
 
 @media (width >= 900px) {
   footer .footer > div {
-    padding: 40px 32px 24px;
+    padding: 40px 32px 0;
+  }
+
+  footer .footer > div > div:first-child {
+    grid-template-columns: 1.5fr repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  footer .footer > div > div:last-child {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }

@@ -3,17 +3,24 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
+@media (width >= 600px) {
+  .cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .cards > ul > li {
-  border: 1px solid #dadada;
   background-color: var(--background-color);
+  border-radius: 0;
+  overflow: hidden;
 }
 
 .cards .cards-card-body {
-  margin: 16px;
+  padding: 0 4px;
 }
 
 .cards .cards-card-image {
@@ -24,4 +31,40 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  border-radius: 8px;
+}
+
+.cards .cards-card-body h3 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dark-color);
+  margin-top: 12px;
+}
+
+.cards .cards-card-body h3 a {
+  color: var(--dark-color);
+  text-decoration: none;
+}
+
+.cards .cards-card-body h3 a:hover {
+  color: var(--color-rust);
+}
+
+.cards .cards-card-body p {
+  font-size: var(--body-font-size-s);
+  line-height: 1.55;
+  color: var(--color-brown-light);
+}
+
+.cards a.button:any-link {
+  background-color: var(--color-rust);
+  border-color: var(--color-rust);
+  color: var(--color-white);
+}
+
+.cards a.button:hover {
+  background-color: var(--color-rust-hover);
+  border-color: var(--color-rust-hover);
 }

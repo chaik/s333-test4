@@ -114,10 +114,14 @@ export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  const fragment = await loadFragment(navPath);
+  let fragment = await loadFragment(navPath);
+  if (!fragment && navPath !== '/nav') {
+    fragment = await loadFragment('/nav');
+  }
 
   // decorate nav DOM
   block.textContent = '';
+  if (!fragment) return;
   const nav = document.createElement('nav');
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);

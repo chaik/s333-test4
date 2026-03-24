@@ -1,4 +1,4 @@
-const API_URL = 'https://publish-p45403-e1547974.adobeaemcloud.com/compute/coffee-tasting-booking';
+const API_URL = 'https://compute-backend-p188602-d568746-first-edge-function.adobeaemcloud.com/compute/coffee-tasting-booking';
 
 function escapeHtml(str) {
   const div = document.createElement('div');
